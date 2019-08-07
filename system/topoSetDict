@@ -1,0 +1,198 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    // Baffle 0
+    {
+        // Cells on first side of baffle
+        name    csBaffle_0_0;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_0_1|block_0_2)";
+        }
+    }
+    {
+        // Cells on second side of baffle
+        name    csBaffle_0_1;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_1_1|block_1_2)";
+        }
+    }
+    {
+        // Faces of on first side of baffle
+        name    fsBaffle_0;
+        type    faceSet;
+        action  new;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_0_0;
+            option all;
+        }
+    }
+    {
+        // Common faces between first and second side of baffle
+        name    fsBaffle_0;
+        type    faceSet;
+        action  subset;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_0_1;
+            option all;
+        }
+    }
+    {
+        // Create face zone for baffle 0
+        name    fzBaffle_0;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet fsBaffle_0;
+        }
+    }
+
+    // Baffle 1
+    {
+        // Cells on first side of baffle
+        name    csBaffle_1_0;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_1_0|block_1_1)";
+        }
+    }
+    {
+        // Cells on second side of baffle
+        name    csBaffle_1_1;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_2_0|block_2_1)";
+        }
+    }
+    {
+        // Faces of on first side of baffle
+        name    fsBaffle_1;
+        type    faceSet;
+        action  new;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_1_0;
+            option all;
+        }
+    }
+    {
+        // Common faces between first and second side of baffle
+        name    fsBaffle_1;
+        type    faceSet;
+        action  subset;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_1_1;
+            option all;
+        }
+    }
+    {
+        // Create face zone for baffle 1
+        name    fzBaffle_1;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet fsBaffle_1;
+        }
+    }
+
+    // Baffle 2
+    {
+        // Cells on first side of baffle
+        name    csBaffle_2_0;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_2_1|block_2_2)";
+        }
+    }
+    {
+        // Cells on second side of baffle
+        name    csBaffle_2_1;
+        type    cellSet;
+        action  new;
+        source  zoneToCell;
+        sourceInfo
+        {
+            name "(block_3_1|block_3_2)";
+        }
+    }
+    {
+        // Faces of on first side of baffle
+        name    fsBaffle_2;
+        type    faceSet;
+        action  new;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_2_0;
+            option all;
+        }
+    }
+    {
+        // Common faces between first and second side of baffle
+        name    fsBaffle_2;
+        type    faceSet;
+        action  subset;
+        source  cellToFace;
+        sourceInfo
+        {
+            set csBaffle_2_1;
+            option all;
+        }
+    }
+    {
+        // Create face zone for baffle 2
+        name    fzBaffle_2;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet fsBaffle_2;
+        }
+    }
+);
+
+// ************************************************************************* //

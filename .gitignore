@@ -1,0 +1,5 @@
+*.foam
+constant/polyMesh/
+postProcessing/
+VTK/
+[1-9]*/

@@ -1,0 +1,16 @@
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      pressureDifferencePatch;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+pressureDifferencePatch
+{
+    patch1 inlet;
+    patch2 outlet;
+
+    #includeEtc "caseDicts/postProcessing/pressure/pressureDifferencePatch.cfg"
+}
